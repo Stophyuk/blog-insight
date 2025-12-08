@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blog Insight
 
-## Getting Started
+다양한 주제의 인사이트 있는 글들을 제공하는 콘텐츠 플랫폼입니다.
 
-First, run the development server:
+## 주요 기능
+
+- ✅ SEO 최적화된 블로그 플랫폼
+- ✅ Google AdSense 통합
+- ✅ 쿠팡파트너스 광고 통합
+- ✅ 반응형 디자인
+- ✅ TypeScript + Next.js 15
+- ✅ Tailwind CSS 스타일링
+
+## 시작하기
+
+### 1. 의존성 설치
+
+```bash
+npm install
+```
+
+### 2. 환경변수 설정
+
+`.env.example` 파일을 복사하여 `.env.local` 파일을 생성합니다:
+
+```bash
+cp .env.example .env.local
+```
+
+그리고 필요한 환경변수를 설정합니다:
+
+```env
+NEXT_PUBLIC_ADSENSE_ID=ca-pub-XXXXXXXXXXXXXXXX
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_COUPANG_PARTNER_ID=your-coupang-partner-id
+```
+
+### 3. 개발 서버 실행
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 확인합니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 프로젝트 구조
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+blog-insight/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx         # 루트 레이아웃 (SEO, 광고 스크립트)
+│   └── page.tsx           # 홈페이지
+├── components/            # React 컴포넌트
+│   ├── layout/           # 레이아웃 컴포넌트
+│   │   ├── Header.tsx
+│   │   └── Footer.tsx
+│   ├── blog/             # 블로그 관련 컴포넌트
+│   │   ├── PostCard.tsx
+│   │   └── PostList.tsx
+│   └── ads/              # 광고 컴포넌트
+│       ├── AdSense.tsx
+│       └── CoupangPartners.tsx
+├── lib/                   # 유틸리티 함수
+│   ├── seo/              # SEO 관련
+│   │   └── metadata.ts
+│   └── utils/
+│       └── cn.ts         # Tailwind 클래스 유틸리티
+└── types/                # TypeScript 타입 정의
+    └── blog.ts
+```
 
-## Learn More
+## 다음 단계
 
-To learn more about Next.js, take a look at the following resources:
+### 데이터베이스 연결
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Prisma 또는 Drizzle ORM 설정
+- PostgreSQL 또는 MongoDB 연결
+- 블로그 포스트 CRUD API 구현
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 콘텐츠 수집 시스템
 
-## Deploy on Vercel
+- 네이버 블로그 API/RSS 연동
+- 콘텐츠 분석 및 처리
+- 자동 포스팅 시스템 구현
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 관리자 대시보드
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 포스트 관리
+- 통계 및 분석
+- 광고 수익 트래킹
+
+### SEO 고도화
+
+- 사이트맵 자동 생성
+- RSS 피드
+- 구조화된 데이터 (JSON-LD)
+- robots.txt 최적화
+
+## 기술 스택
+
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Custom Components
+- **Analytics**: Google Analytics
+- **Ads**: Google AdSense, Coupang Partners
+
+## 라이선스
+
+이 프로젝트는 MIT 라이선스를 따릅니다.
