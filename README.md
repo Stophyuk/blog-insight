@@ -1,108 +1,56 @@
 # Blog Insight
 
-다양한 주제의 인사이트 있는 글들을 제공하는 콘텐츠 플랫폼입니다.
+한국어 · [English](README.en.md)
 
-## 주요 기능
+광고로 운영하는 블로그를 시작할 때 쓰는 **Next.js 뼈대**입니다. SEO 메타데이터 도우미, Google AdSense · 쿠팡파트너스 광고 자리, 글 목록 부품까지 들어 있습니다. 글 데이터는 아직 예시(`mockPosts`)이고 DB는 붙어 있지 않습니다.
 
-- ✅ SEO 최적화된 블로그 플랫폼
-- ✅ Google AdSense 통합
-- ✅ 쿠팡파트너스 광고 통합
-- ✅ 반응형 디자인
-- ✅ TypeScript + Next.js 15
-- ✅ Tailwind CSS 스타일링
+## 들어 있는 것
 
-## 시작하기
+- `lib/seo/metadata.ts` — 페이지마다 제목 · 설명 · OG 태그를 만드는 `generateMetadata()`와 기본값 `defaultSEO`
+- `components/ads/` — AdSense · 쿠팡파트너스 광고 자리. 개발 중 키가 없으면 자리 표시 상자를 보여 줍니다
+- `components/blog/` — 글 카드와 목록
+- `components/layout/` — 머리 · 바닥
+- 루트 레이아웃에서 AdSense · Google Analytics 스크립트를 불러옵니다
 
-### 1. 의존성 설치
+## 실행
 
 ```bash
 npm install
+npm run dev   # http://localhost:3000
 ```
 
-### 2. 환경변수 설정
-
-`.env.example` 파일을 복사하여 `.env.local` 파일을 생성합니다:
-
-```bash
-cp .env.example .env.local
-```
-
-그리고 필요한 환경변수를 설정합니다:
+`.env.local`에 넣을 것(전부 선택):
 
 ```env
+NEXT_PUBLIC_SITE_URL=https://example.com
 NEXT_PUBLIC_ADSENSE_ID=ca-pub-XXXXXXXXXXXXXXXX
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 NEXT_PUBLIC_COUPANG_PARTNER_ID=your-coupang-partner-id
 ```
 
-### 3. 개발 서버 실행
-
-```bash
-npm run dev
-```
-
-브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 확인합니다.
-
-## 프로젝트 구조
+## 구조
 
 ```
-blog-insight/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx         # 루트 레이아웃 (SEO, 광고 스크립트)
-│   └── page.tsx           # 홈페이지
-├── components/            # React 컴포넌트
-│   ├── layout/           # 레이아웃 컴포넌트
-│   │   ├── Header.tsx
-│   │   └── Footer.tsx
-│   ├── blog/             # 블로그 관련 컴포넌트
-│   │   ├── PostCard.tsx
-│   │   └── PostList.tsx
-│   └── ads/              # 광고 컴포넌트
-│       ├── AdSense.tsx
-│       └── CoupangPartners.tsx
-├── lib/                   # 유틸리티 함수
-│   ├── seo/              # SEO 관련
-│   │   └── metadata.ts
-│   └── utils/
-│       └── cn.ts         # Tailwind 클래스 유틸리티
-└── types/                # TypeScript 타입 정의
-    └── blog.ts
+app/                 루트 레이아웃(SEO · 광고 스크립트) · 첫 화면
+components/
+  ads/               AdSense.tsx · CoupangPartners.tsx
+  blog/              PostCard.tsx · PostList.tsx
+  layout/            Header.tsx · Footer.tsx
+lib/
+  seo/metadata.ts    메타데이터 도우미
+  utils/cn.ts        Tailwind 클래스 합치기
+types/blog.ts        글 타입
 ```
 
-## 다음 단계
+## 다음에 붙일 것
 
-### 데이터베이스 연결
+- 글 저장(DB)과 작성 화면
+- 사이트맵 · RSS · 구조화 데이터(JSON-LD) · robots.txt
 
-- Prisma 또는 Drizzle ORM 설정
-- PostgreSQL 또는 MongoDB 연결
-- 블로그 포스트 CRUD API 구현
+## 스택
 
-### 콘텐츠 수집 시스템
-
-- 콘텐츠 분석 및 처리
-
-### 관리자 대시보드
-
-- 포스트 관리
-- 통계 및 분석
-- 광고 수익 트래킹
-
-### SEO 고도화
-
-- 사이트맵 자동 생성
-- RSS 피드
-- 구조화된 데이터 (JSON-LD)
-- robots.txt 최적화
-
-## 기술 스택
-
-- **Framework**: Next.js 15
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Custom Components
-- **Analytics**: Google Analytics
-- **Ads**: Google AdSense, Coupang Partners
+Next.js 16 · TypeScript · Tailwind CSS · Google AdSense · 쿠팡파트너스 · Google Analytics
 
 ## 라이선스
 
-이 프로젝트는 MIT 라이선스를 따릅니다.
+[MIT](LICENSE)
